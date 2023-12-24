@@ -4,17 +4,23 @@ import 'package:whatsapp_manager/config/routing/app_router.dart';
 
 Future<bool> isPermissionGranted(Permission permissionType) async {
   final PermissionStatus status = await permissionType.request();
+
   if (status == PermissionStatus.granted) {
     return true;
-  } else if (status == PermissionStatus.denied ||
-      status == PermissionStatus.limited) {
-    WPmanagerRouter.parentScaffoldMessengerKey.currentState
-        ?.hideCurrentSnackBar();
-    WPmanagerRouter.parentScaffoldMessengerKey.currentState
-        ?.showSnackBar(permissionMessage);
-  } else if (status == PermissionStatus.permanentlyDenied) {
+  }
+
+  // if (status == PermissionStatus.denied ||
+  //     status == PermissionStatus.limited) {}
+
+  if (status == PermissionStatus.permanentlyDenied ||
+      status == PermissionStatus.restricted) {
     openAppSettings();
   }
+
+  WPmanagerRouter.parentScaffoldMessengerKey.currentState
+      ?.hideCurrentSnackBar();
+  WPmanagerRouter.parentScaffoldMessengerKey.currentState
+      ?.showSnackBar(permissionMessage);
   return false;
 }
 
@@ -22,7 +28,7 @@ SnackBar permissionMessage = SnackBar(
   content: const Text(
       "Some functionalities won't work without the necessary permission"),
   action: SnackBarAction(
-    label: "Open Settings",
+    label: "GRANT",
     onPressed: () {
       openAppSettings();
     },

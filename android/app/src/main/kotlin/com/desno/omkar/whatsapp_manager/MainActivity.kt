@@ -1,4 +1,4 @@
-package com.omkar.whatsapp_manager.whatsapp_manager
+package com.desno.omkar.whatsapp_manager
 
 import io.flutter.embedding.android.FlutterActivity
 

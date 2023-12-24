@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:whatsapp_manager/config/routing/app_router.dart';
+import 'package:whatsapp_manager/core/utils/permission_handler.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  WPmanagerRouter.instance;
   runApp(const MyApp());
 }
 
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConnectivityAppWrapper(
       app: MaterialApp.router(
-        title: 'Flutter Demo',
+        title: 'Whatsapp Manager+',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
@@ -36,9 +40,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("home"),
+        child: ElevatedButton(
+          child: const Text("home"),
+          onPressed: () => isPermissionGranted(Permission.calendarFullAccess),
+        ),
       ),
     );
   }
