@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:whatsapp_manager/main.dart';
+import 'package:whatsapp_manager/features/home/presentation/pages/landing_page.dart';
 
 class WPmanagerRouter {
   static final _instance = WPmanagerRouter.init();
@@ -16,12 +16,13 @@ class WPmanagerRouter {
   WPmanagerRouter.init() {
     final List<RouteBase> routes = [
       GoRoute(
-        path: '/home',
-        pageBuilder: (context, state) => getPage(const HomeScreen(), state),
+        path: LandingPage.routePath,
+        name: LandingPage.routeName,
+        pageBuilder: (context, state) => getPage(const LandingPage(), state),
       )
     ];
     router = GoRouter(
-      initialLocation: '/home',
+      initialLocation: LandingPage.routePath,
       navigatorKey: parentNavigatorKey,
       routes: routes,
     );
