@@ -1,4 +1,5 @@
 abstract class MessageEntity {
+  abstract int? id;
   abstract String contactNumber;
   abstract String contactName;
   abstract String contactMessage;
