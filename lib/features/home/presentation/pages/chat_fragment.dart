@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_manager/features/home/presentation/widgets/chat_action_button.dart';
 import 'package:whatsapp_manager/features/home/presentation/widgets/scheduled_message.dart';
 
-import '../widgets/chat_tile.dart';
+import 'package:whatsapp_manager/features/home/presentation/widgets/chat_tile.dart';
 
 class ChatFragement extends StatelessWidget {
   const ChatFragement({super.key});

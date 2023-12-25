@@ -9,10 +9,9 @@ class WpManagerDB {
   static final WpManagerDB instance = WpManagerDB._init();
 
   static Database? _database;
-  WpManagerDB._init() {}
+  WpManagerDB._init();
 
   Future<Database> get database async {
-    print('creating new database...');
     if (_database != null) {
       return _database!;
     }
@@ -40,7 +39,6 @@ class WpManagerDB {
     const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     const textType = 'TEXT NOT NULL';
     const timestampType = 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP';
-    print('creating new database...');
 
     db.execute(''' 
     create table if not exists ${MessageTableModel.tableName} (
